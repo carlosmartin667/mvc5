@@ -11,7 +11,10 @@ namespace HolaMundo.Controllers
     {
         public ActionResult Index()
         {
-            return View();
+            var peliculasServices = new PeliculasServices();
+            var model = peliculasServices.ObtenerPelicula();
+            return Json(model,JsonRequestBehavior.AllowGet);
+            //return View();
         }
 
         public ActionResult About()
@@ -25,11 +28,13 @@ namespace HolaMundo.Controllers
             return View(model);
         }
 
-        public ActionResult Contact()
+        public FileResult Contact()
         {
-            ViewBag.Message = "Your contact page.";
+            //ViewBag.Message = "Your contact page.";C:\Users\Admin\Source\Repos\mvc5\HolaMundo\HolaMundo\mvc.pdf
+            var ruta = Server.MapPath("mvc.pdf");
+            return File(ruta, "application/pdf", "Ejemplo.pdf");
 
-            return View();
+            //return View();
         }
     }
 }
