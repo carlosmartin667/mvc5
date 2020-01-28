@@ -1,4 +1,5 @@
-﻿using HolaMundo.Services;
+﻿using HolaMundo.Dal;
+using HolaMundo.Services;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,6 +10,7 @@ namespace HolaMundo.Controllers
 {
     public class HomeController : Controller
     {
+        private PeliculaRepository _peliculaRepository;
         public ActionResult Index()
         {
             var peliculasServices = new PeliculasServices();
@@ -17,9 +19,9 @@ namespace HolaMundo.Controllers
             //return View();
         }
 
-        public ActionResult About()
+        public ActionResult About(string nombre)
         {
-            ViewBag.Message = "Your application description page.";
+            ViewBag.Message = "Your application description page." +nombre;
 
             var peliculasServices = new PeliculasServices();
             var model = peliculasServices.ObtenerPeliculas();
@@ -35,6 +37,40 @@ namespace HolaMundo.Controllers
             return File(ruta, "application/pdf", "Ejemplo.pdf");
 
             //return View();
+        }
+
+
+        [HttpGet]
+        public ActionResult Formularrio()
+        {
+            ViewBag.Message = "Your application description page." ;
+            return View();
+        }
+        [HttpPost]
+        public ActionResult Formularrio(int edad)
+        {
+            ViewBag.Message = "Your application description page." + edad;
+            return View();
+        }
+
+
+        public HomeController()
+        {
+            _peliculaRepository = new PeliculaRepository();
+        }
+
+        public ActionResult Pelicula()
+        {
+            ViewBag.Message = "Your application description page.";
+            var model = _peliculaRepository.ObtenerPeliculas();
+            return View(model);
+        }
+
+        public ActionResult Detalle(string t)
+        {
+            ViewBag.Message = "titulo de pelicula." + t;
+           
+            return View();
         }
     }
 }

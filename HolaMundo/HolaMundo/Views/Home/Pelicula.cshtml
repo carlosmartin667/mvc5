@@ -1,0 +1,50 @@
+﻿@model List<HolaMundo.Models.Pelicula>
+@{
+    ViewBag.Title = "Pelicula";
+}
+
+<h2>Pelicula</h2>
+
+<div>
+    mostrando @Model.Count pelicula
+</div>
+<table class="table table-bordered">
+    <thead>
+        <tr>
+            <th scope="col">Duracion</th>
+            <th scope="col">Pais</th>
+            <th scope="col">Publicacion</th>
+            <th scope="col">Titulo</th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var pelicula in Model)
+        {
+
+            var claseFila = string.Empty;
+            if (pelicula.Duracion ==123)
+            {
+                claseFila = "danger";
+             }
+        <tr class="@claseFila">
+            <td>
+                @pelicula.Duracion
+            </td>
+            <td>
+                @pelicula.Pais
+            </td>
+            <td>
+                @pelicula.Publicacion
+            </td>
+            <td>
+                @pelicula.Titulo
+            </td>
+            <td> @Html.ActionLink("detalle", "Detalle","Home",new {t= pelicula.Titulo }, new {miAtributo = "valor1", @class="btn btn-danger"})</td>
+        </tr>
+        }
+
+    </tbody>
+</table>
+
+@{Html.RenderAction("Formularrio");}
