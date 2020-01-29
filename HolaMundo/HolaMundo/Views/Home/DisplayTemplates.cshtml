@@ -1,0 +1,26 @@
+﻿
+@{
+    ViewBag.Title = "DisplayTemplates";
+}
+
+@Html.Display("Propiedad")
+@Html.Editor("Propiedad")
+
+@{
+    var listado = new List<SelectListItem>() {
+        new SelectListItem(){
+        Text="si",
+        Value="1"
+    },
+
+        new SelectListItem(){
+        Text="no",
+        Value="2",
+        Disabled=true
+    }
+
+    };
+}
+<br />
+<label>elija una obcion: </label>
+@Html.DropDownList("miDropDownList",listado)

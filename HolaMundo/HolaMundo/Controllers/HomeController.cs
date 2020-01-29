@@ -19,6 +19,20 @@ namespace HolaMundo.Controllers
             //return View();
         }
 
+        public ActionResult DisplayTemplates()
+        {
+            var personas = new Personas()
+            {
+                Nombre = "martin",
+                Edad = 20,
+                Empleado = true,
+                Nacimiento=new DateTime(2000, 2,10)
+            };
+            ViewBag.Propiedad = personas;
+
+            return View();
+        } 
+
         public ActionResult About(string nombre)
         {
             ViewBag.Message = "Your application description page." +nombre;
@@ -73,4 +87,12 @@ namespace HolaMundo.Controllers
             return View();
         }
     }
+}
+
+public class Personas
+{
+    public int Edad { get; set; }
+    public string Nombre { get; set; }
+    public bool Empleado { get; set; }
+    public DateTime Nacimiento { get; set; }
 }

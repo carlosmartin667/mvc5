@@ -169,6 +169,9 @@
     <Content Include="Views\Home\Formularrio.cshtml" />
     <Content Include="Views\Home\Pelicula.cshtml" />
     <Content Include="Views\Home\Detalle.cshtml" />
+    <Content Include="Views\Home\DisplayTemplates.cshtml" />
+    <Content Include="Views\Home\DisplayTemplates\Boolean.cshtml" />
+    <Content Include="Views\Home\DisplayTemplates\DateTime.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
